@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wender de Oliveira · Implantação de Sistemas</title>
+<meta name="description" content="Implantação de sistemas, levantamento de requisitos, customer success e pré-vendas. Sistemas levantados e implantados do processo da empresa ao uso no dia a dia.">
+<meta property="og:title" content="Wender de Oliveira · Implantação de Sistemas">
+<meta property="og:description" content="Do processo da empresa ao sistema em uso: levantamento de requisitos, regras de negócio, implantação e acompanhamento.">
+<meta property="og:image" content="imagens/rastros/painel.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23234e52'/><text x='16' y='22' font-family='Georgia,serif' font-size='17' text-anchor='middle' fill='%23f6efe3'>W</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --surface: #ffffff;
+    --surface-2: #efeae0;
+    --text: #1d2321;
+    --muted: #5b6461;
+    --line: #ddd6c8;
+    --accent: #234e52;
+    --accent-soft: #dde9e6;
+    --accent-text: #1b4245;
+    --warm: #b4572e;
+    --ok: #2f7a4b;
+    --ok-soft: #e1f0e6;
+    --dev: #8a5a00;
+    --dev-soft: #f6ead0;
+    --shadow: 0 1px 2px rgba(29,35,33,.06), 0 8px 24px rgba(29,35,33,.06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141817;
+      --surface: #1b201f;
+      --surface-2: #222826;
+      --text: #e9ece9;
+      --muted: #a2aba7;
+      --line: #313835;
+      --accent: #7cc1b8;
+      --accent-soft: #1f3533;
+      --accent-text: #9fd6ce;
+      --warm: #e08a5f;
+      --ok: #7fd09c;
+      --ok-soft: #1c3325;
+      --dev: #e6c070;
+      --dev-soft: #352a12;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141817; --surface: #1b201f; --surface-2: #222826; --text: #e9ece9; --muted: #a2aba7;
+    --line: #313835; --accent: #7cc1b8; --accent-soft: #1f3533; --accent-text: #9fd6ce; --warm: #e08a5f;
+    --ok: #7fd09c; --ok-soft: #1c3325; --dev: #e6c070; --dev-soft: #352a12;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 400 17px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent-text); text-underline-offset: 3px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Topo */
+  .topo {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  }
+  .topo .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .marca { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 19px; color: var(--text); text-decoration: none; }
+  .topo nav { display: flex; gap: 22px; }
+  .topo nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .topo nav a:hover { color: var(--text); }
+
+  /* Abertura */
+  .abertura { padding: 88px 0 72px; }
+  .sobrelinha { font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--warm); margin: 0 0 18px; }
+  .abertura h1 { font-size: clamp(38px, 6vw, 64px); max-width: 15ch; }
+  .abertura h1 em { font-style: italic; color: var(--accent-text); }
+  .abertura .lead { font-size: 20px; color: var(--muted); max-width: 60ch; margin: 24px 0 32px; }
+  .botoes { display: flex; flex-wrap: wrap; gap: 12px; }
+  .botao {
+    display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--line);
+    color: var(--text); background: var(--surface); transition: transform .15s, border-color .15s;
+  }
+  .botao:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .botao.principal { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .botao svg { width: 18px; height: 18px; }
+
+  .numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
+  .numero { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; }
+  .numero strong { display: block; font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 600; color: var(--accent-text); line-height: 1.1; }
+  .numero span { color: var(--muted); font-size: 15px; }
+
+  /* Seções */
+  section { padding: 72px 0; }
+  .titulo-secao { margin-bottom: 40px; }
+  .titulo-secao h2 { font-size: clamp(30px, 4vw, 42px); }
+  .titulo-secao p { color: var(--muted); max-width: 62ch; margin: 12px 0 0; }
+
+  /* Como trabalho */
+  .etapas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: etapa; }
+  .etapas li { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; counter-increment: etapa; }
+  .etapas li::before { content: "0" counter(etapa); font-family: Fraunces, Georgia, serif; font-size: 15px; color: var(--warm); font-weight: 600; }
+  .etapas h3 { font-size: 20px; margin: 6px 0 8px; }
+  .etapas p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.55; }
+
+  /* Projetos */
+  #projetos { background: var(--surface-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .projeto { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; }
+  .projeto + .projeto { margin-top: 36px; }
+  .projeto-capa { background: var(--surface-2); border-bottom: 1px solid var(--line); cursor: zoom-in; padding: 0; border-left: 0; border-right: 0; border-top: 0; width: 100%; }
+  .projeto-capa img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+  .projeto-corpo { padding: 36px 40px 40px; }
+  .projeto-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .selo { font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+  .selo.dev { background: var(--dev-soft); color: var(--dev); }
+  .cliente { font-size: 14px; color: var(--muted); }
+  .projeto h3 { font-size: clamp(26px, 3.2vw, 34px); }
+  .projeto .resumo { font-size: 19px; color: var(--muted); margin: 10px 0 28px; max-width: 62ch; }
+
+  .caso { display: grid; grid-template-columns: 1fr 1.4fr; gap: 36px; }
+  .caso h4 { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--warm); margin: 0 0 10px; }
+  .caso p { margin: 0 0 22px; }
+  .caso ul { margin: 0 0 22px; padding-left: 20px; }
+  .caso li { margin-bottom: 8px; }
+  .caso li::marker { color: var(--accent); }
+  .resultado { background: var(--accent-soft); border-radius: 14px; padding: 16px 18px; color: var(--text); }
+  .resultado p { margin: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; }
+  .chips li { font-size: 13px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+  .galeria { display: grid; gap: 12px; margin-top: 30px; grid-template-columns: repeat(var(--cols, 4), 1fr); }
+  .galeria button { padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface-2); cursor: zoom-in; text-align: left; color: inherit; font: inherit; }
+  .galeria img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; transition: transform .25s; }
+  .galeria .alta img { aspect-ratio: 9 / 16; }
+  .galeria button:hover img { transform: scale(1.03); }
+  .galeria span { display: block; font-size: 13px; color: var(--muted); padding: 8px 10px; border-top: 1px solid var(--line); background: var(--surface); }
+  .link-projeto { display: inline-flex; margin-top: 26px; font-weight: 600; }
+
+  /* Outros */
+  .outros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .outro { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .outro h3 { font-size: 20px; margin-bottom: 8px; }
+  .outro p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Competências */
+  .competencias { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .competencias h3 { font-size: 22px; margin-bottom: 14px; }
+  .competencias .chips li { font-size: 15px; padding: 7px 14px; color: var(--text); background: var(--surface); }
+
+  /* Contato */
+  .contato { text-align: center; padding: 88px 0; border-top: 1px solid var(--line); }
+  .contato h2 { font-size: clamp(30px, 4vw, 44px); }
+  .contato p { color: var(--muted); margin: 14px auto 28px; max-width: 52ch; }
+  .contato .botoes { justify-content: center; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 0 0 40px; }
+
+  /* Visualizador */
+  dialog { border: 0; padding: 0; background: transparent; max-width: min(96vw, 1400px); max-height: 94vh; }
+  dialog::backdrop { background: rgba(10,12,12,.86); }
+  dialog img { max-height: 84vh; width: auto; margin: 0 auto; border-radius: 10px; }
+  dialog p { color: #e9ece9; text-align: center; margin: 12px 0 0; font-size: 15px; }
+  dialog .fechar { position: fixed; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 24px; cursor: pointer; }
+
+  @media (max-width: 900px) {
+    .etapas { grid-template-columns: 1fr 1fr; }
+    .caso { grid-template-columns: 1fr; gap: 0; }
+    .outros { grid-template-columns: 1fr; }
+    .competencias { grid-template-columns: 1fr; gap: 28px; }
+    .galeria { --cols: 3 !important; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .topo nav { gap: 14px; }
+    .topo nav a.opcional { display: none; }
+    .abertura { padding: 56px 0 48px; }
+    .abertura .lead { font-size: 18px; }
+    .numeros { grid-template-columns: 1fr; margin-top: 40px; }
+    section { padding: 56px 0; }
+    .etapas { grid-template-columns: 1fr; }
+    .projeto-corpo { padding: 24px 20px 28px; }
+    .projeto .resumo { font-size: 17px; }
+    .galeria { --cols: 2 !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#">Wender de Oliveira</a>
+    <nav>
+      <a href="#como-trabalho" class="opcional">Como trabalho</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap abertura">
+    <p class="sobrelinha">Implantação de sistemas · Requisitos · Customer Success · Pré-vendas</p>
+    <h1>Do processo da empresa ao <em>sistema em uso</em>.</h1>
+    <p class="lead">
+      Tenho mais de 6 anos na área comercial, em atendimento consultivo e pós-venda, e formação em
+      Análise e Desenvolvimento de Sistemas. Converso com quem vende, produz e decide, descubro onde
+      o trabalho trava, documento as regras e acompanho a implantação até a equipe usar o sistema
+      no dia a dia.
+    </p>
+    <div class="botoes">
+      <a class="botao principal" href="#projetos">Ver projetos</a>
+      <a class="botao" href="https://www.linkedin.com/in/wenderoliveira" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a class="botao" href="https://github.com/wender95" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.57v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <div class="numeros">
+      <div class="numero"><strong>3</strong><span>sistemas levantados e implantados sob demanda</span></div>
+      <div class="numero"><strong>2</strong><span>em uso real todos os dias, em empresas</span></div>
+      <div class="numero"><strong>1</strong><span>preparado para ser vendido como produto</span></div>
+    </div>
+  </div>
+
+  <section id="como-trabalho">
+    <div class="wrap">
+      <div class="titulo-secao">
+        <h2>Como eu trabalho</h2>
+        <p>O sistema é a última parte. Antes dele vem entender a operação; depois dele, garantir que as pessoas usem.</p>
+      </div>
+      <ol class="etapas">
+        <li><h3>Escutar</h3><p>Converso com quem vende, produz, instala e decide. Cada um vê um pedaço diferente do problema.</p></li>
+        <li><h3>Mapear</h3><p>Desenho o processo como ele é de verdade e marco onde o trabalho trava ou se perde.</p></li>
+        <li><h3>Documentar</h3><p>Requisitos, regras de negócio e indicadores escritos e validados antes de construir.</p></li>
+        <li><h3>Implantar</h3><p>Construção com IA (Claude Code), regras garantidas por testes automatizados, treinamento da equipe.</p></li>
+        <li><h3>Acompanhar</h3><p>Suporte no dia a dia, ajustes a partir do uso real e novas versões sem perder dados.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="wrap">
+      <div class="titulo-secao">
+        <h2>Projetos</h2>
+        <p>Cada um começou com uma conversa sobre como a empresa trabalhava. Os prints usam dados fictícios. Clique nas imagens para ampliar.</p>
+      </div>
+
+      <!-- RastrOS -->
+      <article class="projeto">
+        <button class="projeto-capa" data-ampliar="imagens/rastros/painel.png" data-legenda="Painel operacional: o que cada adesivador está fazendo agora">
+          <img src="imagens/rastros/painel.png" alt="Painel operacional do RastrOS" loading="lazy">
+        </button>
+        <div class="projeto-corpo">
+          <div class="projeto-topo">
+            <span class="selo">Em produção desde set/2026</span>
+            <span class="cliente">Empresa de comunicação visual</span>
+          </div>
+          <h3>RastrOS: rastreio de ordens de serviço e agenda de instalação</h3>
+          <p class="resumo">Mostra em que setor está cada pedido, separa o tempo parado na fila do tempo de trabalho e substituiu a planilha da agenda dos instaladores.</p>
+
+          <div class="caso">
+            <div>
+              <h4>O problema</h4>
+              <p>Cada pedido passa por criação, impressão, recorte, acabamento e pela equipe que adesiva os veículos. Ninguém sabia com certeza onde estava uma OS: perguntava-se no corredor. O tempo de fila se misturava com o de trabalho e escondia o gargalo, e a agenda dos instaladores vivia numa planilha, sem ligação com a produção.</p>
+              <h4>Competências</h4>
+              <ul class="chips">
+                <li>Mapeamento de processos</li><li>Levantamento de requisitos</li><li>Regras de negócio</li><li>Indicadores</li><li>Treinamento</li>
+              </ul>
+            </div>
+            <div>
+              <h4>O que eu fiz</h4>
+              <ul>
+                <li>Mapeei o processo com comercial, financeiro, produção e diretoria.</li>
+                <li>Documentei requisitos, regras de negócio, a matriz de passagem entre setores e os indicadores (tempo em fila × tempo de execução, em horário comercial) antes de construir.</li>
+                <li>Implantei com 5 perfis de acesso, tela mínima para quem produz (receber, devolver, despachar), versão de celular para os instaladores e painel ao vivo na TV.</li>
+                <li>Criei a importação do pedido direto do ERP da empresa por uma extensão de navegador, sem digitar tudo de novo.</li>
+                <li>Treinei a equipe e dou suporte no dia a dia.</li>
+              </ul>
+              <div class="resultado">
+                <p><strong>Resultado:</strong> a equipe usa todos os dias, no computador e no celular, publicado na internet com domínio próprio. A agenda acompanha a produção: quando o material fica pronto, o carro muda de status sozinho.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria" style="--cols:5">
+            <button data-ampliar="imagens/rastros/agenda.png" data-legenda="Agenda dos adesivadores, no formato da planilha antiga"><img src="imagens/rastros/agenda.png" alt="" loading="lazy"><span>Agenda dos instaladores</span></button>
+            <button data-ampliar="imagens/rastros/produtividade.png" data-legenda="Produtividade por setor e por pessoa"><img src="imagens/rastros/produtividade.png" alt="" loading="lazy"><span>Produtividade</span></button>
+            <button data-ampliar="imagens/rastros/tv-adesivadores.png" data-legenda="Painel na TV da produção"><img src="imagens/rastros/tv-adesivadores.png" alt="" loading="lazy"><span>Painel na TV</span></button>
+            <button class="alta" data-ampliar="imagens/rastros/minha-agenda-celular.png" data-legenda="Minha agenda: o instalador inicia, pausa e conclui pelo celular"><img src="imagens/rastros/minha-agenda-celular.png" alt="" loading="lazy"><span>Celular do instalador</span></button>
+            <button class="alta" data-ampliar="imagens/rastros/movimentar-celular.png" data-legenda="Tela do operador: receber, devolver, despachar"><img src="imagens/rastros/movimentar-celular.png" alt="" loading="lazy"><span>Tela do operador</span></button>
+          </div>
+          <a class="link-projeto" href="https://github.com/wender95/rastros" target="_blank" rel="noopener">Ver detalhes no GitHub →</a>
+        </div>
+      </article>
+
+      <!-- Estética automotiva -->
+      <article class="projeto">
+        <button class="projeto-capa" data-ampliar="imagens/estetica/agenda-semana.png" data-legenda="A semana na agenda: branco é agendado, azul é concluído, verde é recebido">
+          <img src="imagens/estetica/agenda-semana.png" alt="Agenda da semana da estética automotiva" loading="lazy">
+        </button>
+        <div class="projeto-corpo">
+          <div class="projeto-topo">
+            <span class="selo">Em produção · preparado como produto</span>
+            <span class="cliente">Estética automotiva</span>
+          </div>
+          <h3>Agenda e gestão financeira para estética automotiva</h3>
+          <p class="resumo">Juntou agenda, clientes, fornecedores, caixa e contas a pagar num lugar só, e foi preparado para ser vendido como produto, por mensalidade.</p>
+
+          <div class="caso">
+            <div>
+              <h4>O problema</h4>
+              <p>A agenda era um caderno e uma planilha. O valor de cada serviço, a forma de pagamento e o que já tinha sido recebido ficavam espalhados, e o fechamento do mês era feito na mão. Contas a pagar e serviços terceirizados ficavam fora de tudo.</p>
+              <h4>Competências</h4>
+              <ul class="chips">
+                <li>Levantamento de requisitos</li><li>Regras de negócio</li><li>Implantação</li><li>Visão de produto</li>
+              </ul>
+            </div>
+            <div>
+              <h4>O que eu fiz</h4>
+              <ul>
+                <li>Levantei com o dono e a equipe como a agenda e o dinheiro circulavam na loja.</li>
+                <li>Defini as regras: formas de recebimento, parcelamento de contas, quando um serviço entra no caixa, como a parte do terceirizado vira uma conta a pagar e quem enxerga o quê.</li>
+                <li>Implantei a agenda compartilhada em tempo real, o financeiro por dia, mês e ano, o caixa e as contas a pagar, com permissões que o próprio dono configura.</li>
+                <li>Preparei o sistema para rodar sem ninguém por perto: backup automático diário, atualização sem perder dados, mais de 300 testes automatizados.</li>
+              </ul>
+              <div class="resultado">
+                <p><strong>Resultado:</strong> fechamento do mês sem conta na mão e nada digitado duas vezes. O caixa junta sozinho a agenda, as contas pagas e os lançamentos avulsos. E está pronto para ser vendido a outras lojas por mensalidade.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria" style="--cols:5">
+            <button class="alta" data-ampliar="imagens/estetica/servico.png" data-legenda="O serviço aberto: tabela de preços, terceirizado, forma de pagamento e cliente"><img src="imagens/estetica/servico.png" alt="" loading="lazy"><span>Serviço aberto</span></button>
+            <button data-ampliar="imagens/estetica/financeiro.png" data-legenda="Controle financeiro"><img src="imagens/estetica/financeiro.png" alt="" loading="lazy"><span>Financeiro</span></button>
+            <button data-ampliar="imagens/estetica/caixa.png" data-legenda="Caixa: agenda, contas pagas e lançamentos num extrato só"><img src="imagens/estetica/caixa.png" alt="" loading="lazy"><span>Caixa</span></button>
+            <button data-ampliar="imagens/estetica/pagamentos.png" data-legenda="Contas a pagar, com o terceirizado e a forma de pagar"><img src="imagens/estetica/pagamentos.png" alt="" loading="lazy"><span>Contas a pagar</span></button>
+            <button data-ampliar="imagens/estetica/usuarios.png" data-legenda="Permissões por perfil, configuradas pelo dono"><img src="imagens/estetica/usuarios.png" alt="" loading="lazy"><span>Permissões</span></button>
+          </div>
+          <a class="link-projeto" href="https://github.com/wender95/agenda-estetica-automotiva" target="_blank" rel="noopener">Ver detalhes no GitHub →</a>
+        </div>
+      </article>
+
+      <!-- Caderno de Pedidos -->
+      <article class="projeto">
+        <div class="projeto-corpo">
+          <div class="projeto-topo">
+            <span class="selo">Em uso</span>
+            <span class="cliente">Vendedora de doces</span>
+          </div>
+          <h3>Caderno de Pedidos: pedidos e estoque no celular</h3>
+          <p class="resumo">Um app Android que trocou o caderno de papel de uma pequena vendedora de doces.</p>
+
+          <div class="caso">
+            <div>
+              <h4>O problema</h4>
+              <p>Pedidos e estoque eram anotados num caderno. Saber quanto cada cliente devia no fim do mês e o que ainda tinha para vender exigia refazer as contas toda vez.</p>
+              <h4>Competências</h4>
+              <ul class="chips">
+                <li>Levantamento de requisitos</li><li>Implantação</li><li>Experiência de uso</li>
+              </ul>
+            </div>
+            <div>
+              <h4>O que eu fiz</h4>
+              <ul>
+                <li>Levantei com a vendedora o que precisava ser rápido: lançar um pedido em três toques.</li>
+                <li>O estoque baixa sozinho a cada pedido, e dois celulares compartilham o mesmo estoque em tempo real.</li>
+                <li>A cobrança do mês sai pronta para mandar no WhatsApp, com pagamento parcial.</li>
+                <li>Funciona sem internet e sincroniza quando a conexão volta.</li>
+              </ul>
+              <div class="resultado">
+                <p><strong>Resultado:</strong> o caderno foi aposentado e a cobrança do mês deixou de ser feita na mão. O mesmo app está sendo adaptado para um segundo negócio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="galeria" style="--cols:4">
+            <button class="alta" data-ampliar="imagens/pedidos/lancar.png" data-legenda="Lançar um pedido"><img src="imagens/pedidos/lancar.png" alt="" loading="lazy"><span>Lançar pedido</span></button>
+            <button class="alta" data-ampliar="imagens/pedidos/estoque.png" data-legenda="Estoque compartilhado entre celulares"><img src="imagens/pedidos/estoque.png" alt="" loading="lazy"><span>Estoque</span></button>
+            <button class="alta" data-ampliar="imagens/pedidos/relatorio.png" data-legenda="Relatório e cobrança do mês"><img src="imagens/pedidos/relatorio.png" alt="" loading="lazy"><span>Cobrança do mês</span></button>
+            <button class="alta" data-ampliar="imagens/pedidos/cadastros.png" data-legenda="Cadastros de clientes e produtos"><img src="imagens/pedidos/cadastros.png" alt="" loading="lazy"><span>Cadastros</span></button>
+          </div>
+          <a class="link-projeto" href="https://github.com/wender95/caderno-de-pedidos" target="_blank" rel="noopener">Ver detalhes no GitHub →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="outros">
+    <div class="wrap">
+      <div class="titulo-secao">
+        <h2>Ferramentas do dia a dia</h2>
+        <p>Soluções menores, feitas para tirar trabalho repetitivo de quem atende.</p>
+      </div>
+      <div class="outros">
+        <div class="outro">
+          <span class="selo dev">Em desenvolvimento</span>
+          <h3 style="margin-top:12px">Ordem de serviço para pequenas empresas</h3>
+          <p>Produto com marca personalizável, nascido da agenda da estética: OS com orçamento em PDF, agenda por OS, clientes com endereço pelo CEP, produtos por unidade ou m² e caixa ligado à OS.</p>
+        </div>
+        <div class="outro">
+          <h3>Atendimento no WhatsApp</h3>
+          <p>Extensões de navegador que leem o WhatsApp Web e listam quem está esperando resposta, para nenhum cliente ficar sem retorno.</p>
+        </div>
+        <div class="outro">
+          <h3>Integração com o ERP</h3>
+          <p>Extensão que lê a ordem de serviço aberta no ERP da empresa e a envia ao RastrOS com um clique, sem digitação em dobro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="competencias" style="padding-top:0">
+    <div class="wrap">
+      <div class="competencias">
+        <div>
+          <h3>O que eu faço</h3>
+          <ul class="chips">
+            <li>Levantamento de requisitos</li><li>Mapeamento de processos</li><li>Regras de negócio</li>
+            <li>Indicadores (KPIs)</li><li>Implantação e treinamento</li><li>Suporte ao usuário</li>
+            <li>Customer Success</li><li>Pré-vendas</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Com o que os sistemas são feitos</h3>
+          <ul class="chips">
+            <li>Claude Code</li><li>Kotlin · Spring Boot</li><li>React · TypeScript</li>
+            <li>Testes automatizados</li><li>Android</li><li>Firebase</li><li>Cloudflare Tunnel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <div class="wrap">
+      <h2>Vamos conversar?</h2>
+      <p>Busco oportunidades em implantação de sistemas, levantamento de requisitos, customer success e pré-vendas. Curitiba – PR.</p>
+      <div class="botoes">
+        <a class="botao principal" href="https://www.linkedin.com/in/wenderoliveira" target="_blank" rel="noopener">Falar pelo LinkedIn</a>
+        <a class="botao" href="https://github.com/wender95" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Wender de Oliveira · 2026</footer>
+
+<dialog id="visualizador" aria-label="Imagem ampliada">
+  <button class="fechar" aria-label="Fechar">×</button>
+  <img alt="">
+  <p></p>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('visualizador');
+  const img = dlg.querySelector('img');
+  const leg = dlg.querySelector('p');
+  document.querySelectorAll('[data-ampliar]').forEach(b => b.addEventListener('click', () => {
+    img.src = b.dataset.ampliar;
+    img.alt = leg.textContent = b.dataset.legenda || '';
+    dlg.showModal();
+  }));
+  dlg.addEventListener('click', e => { if (e.target !== img) dlg.close(); });
+</script>
+</body>
+</html>
