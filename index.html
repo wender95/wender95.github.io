@@ -81,6 +81,17 @@
     #pedidos > .wrap.grid > .shot { grid-column: auto; }
     .shot--fill { height: auto; aspect-ratio: 9 / 16; }
   }
+  /* a low screen (a laptop with the browser's bars, or zoom): the content sets the height and never
+     runs into the next section; each section stays at least its screens tall, as before */
+  main > .section.g2 > .wrap { grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr); }
+  @media (min-width: 1280px) {
+    main > .section:not(.hero), footer.closing { height: auto; min-height: calc(var(--h, 1) * 100svh); display: flex; flex-direction: column; }
+    main > .section:not(.hero) > .wrap, footer.closing > .wrap { flex: 1 0 auto; height: auto; }
+  }
+  @media (min-width: 640px) and (max-height: 760px) {
+    main > .hero { height: auto; min-height: 100svh; }
+    .hero--split .hero__media { min-height: 360px; }
+  }
 </style>
 </head>
 <body>
