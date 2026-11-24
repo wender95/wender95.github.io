@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wender de Oliveira: implantação de sistemas e levantamento de requisitos</title>
-<meta name="description" content="Portfólio com três sistemas levantados e implantados: rastreio de ordens de serviço, agenda com financeiro e pedidos no celular.">
+<meta name="description" content="Portfólio com três sistemas levantados e implantados: a gestão completa de uma estética automotiva, rastreio de ordens de serviço e pedidos no celular.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wender de Oliveira: implantação de sistemas">
-<meta property="og:description" content="Três sistemas levantados e implantados, dois em uso todos os dias.">
+<meta property="og:description" content="Três sistemas levantados e implantados; o principal roda uma estética automotiva, da agenda ao caixa.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -59,7 +59,7 @@
   .tool { display: flex; align-items: center; gap: var(--s-4); }
   .shot--fill { height: min(640px, var(--ly-fit, 640px)); }
   @media (max-width: 1023px) {
-    .develop { height: auto; aspect-ratio: 16 / 10; margin-top: var(--s-7); }
+    .develop, .grid--top > .shot--wide { height: auto; aspect-ratio: 16 / 10; margin-top: var(--s-7); }
   }
   @media (min-width: 1024px) and (max-width: 1279px) { .grid.shots > .shot--tall { aspect-ratio: 1 / 1; } }
   /* the tablet: a row of screens stays three-up, the two phones two-up, so each section keeps its screens */
@@ -89,7 +89,7 @@
            rhythm dark-band (#estetica), buttons arrow, mark wordmark, grounds none
      palette stone-blueprint: a grey office-paper ground with a blueprint-blue accent, the look of a process drawn
            on paper before a system is built; type hanken
-     moments: picture-develops on #rastros (the RastrOS agenda comes up as the case study opens: the work arriving) -->
+     moments: picture-develops on #estetica (the agenda of the main system comes up as the case opens: the work arriving) -->
 
 <header class="nav">
   <div class="wrap nav__bar">
@@ -103,20 +103,20 @@
           <div class="wrap grid">
             <div class="menu-col span-3">
               <p class="t-label">Em uso</p>
+              <a href="#estetica">Estética automotiva<span>Gestão da loja, da agenda ao caixa</span></a>
               <a href="#rastros">RastrOS<span>Rastreio de OS por setor</span></a>
-              <a href="#estetica">Estética automotiva<span>Agenda, caixa e contas</span></a>
               <a href="#pedidos">Caderno de Pedidos<span>Pedidos e estoque no celular</span></a>
             </div>
             <div class="menu-col span-3">
               <p class="t-label">Código e vitrines</p>
+              <a href="https://github.com/wender95/agenda-estetica-automotiva">Estética no GitHub<span>Vitrine com prints</span></a>
               <a href="https://github.com/wender95/rastros">RastrOS no GitHub<span>Código e documentação</span></a>
-              <a href="https://github.com/wender95/agenda-estetica-automotiva">Agenda no GitHub<span>Vitrine com prints</span></a>
               <a href="https://github.com/wender95/caderno-de-pedidos">Pedidos no GitHub<span>App Android</span></a>
             </div>
-            <a class="menu-card span-3 start-10" href="#rastros">
-              <div class="panel"><img class="frame__img" src="assets/img/rastros-tv-adesivadores-400.jpg" alt="Painel do RastrOS na TV da produção, com o trabalho de cada adesivador" width="400" height="225"></div>
-              <span class="t-card">RastrOS em produção</span>
-              <span class="t-small muted">Desde setembro de 2026</span>
+            <a class="menu-card span-3 start-10" href="#estetica">
+              <div class="panel"><img class="frame__img" src="assets/img/estetica-clientes-400.jpg" alt="Clientes da estética, com busca por placa e o filtro de recorrência" width="400" height="250"></div>
+              <span class="t-card">Gestão da estética</span>
+              <span class="t-small muted">Nasceu agenda, virou o sistema da loja</span>
             </a>
           </div>
         </div>
@@ -136,22 +136,51 @@
   <section class="hero hero--split" data-enter aria-labelledby="hero-h">
     <div class="wrap"><div class="hero-text grid hero__grid">
       <div class="hero__text span-5">
-        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>RastrOS em produção desde setembro de 2026</p>
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>3 sistemas implantados, 2 em uso</p>
         <h1 id="hero-h">Implantação de <span class="hl">sistemas</span> e regras de negócio</h1>
-        <p class="hero__lead">Levanto o processo com quem vende, produz e decide, escrevo as regras e acompanho a equipe até o uso diário. Três sistemas implantados, dois em uso.</p>
+        <p class="hero__lead">Levanto o processo com quem vende, produz e decide, escrevo as regras e acompanho o uso diário. O principal roda uma estética automotiva.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://www.linkedin.com/in/wenderoliveira">Conversar no LinkedIn<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-          <a class="btn btn--secondary" href="#rastros">Ver os projetos</a>
+          <a class="btn btn--secondary" href="#estetica">Ver o sistema</a>
         </div>
       </div>
       <div class="hero__media span-6 start-7">
-        <img src="assets/img/rastros-painel.jpg" srcset="assets/img/rastros-painel-800.jpg 800w, assets/img/rastros-painel.jpg 1600w" sizes="(max-width: 639px) 100vw, 1200px" alt="Painel do RastrOS: o que cada adesivador está fazendo agora, com as ordens de serviço do dia" style="--ly-pos: 0% 0%" fetchpriority="high" width="1600" height="1000" data-source="client" data-subject="RastrOS, painel operacional">
+        <img src="assets/img/estetica-financeiro.jpg" srcset="assets/img/estetica-financeiro-800.jpg 800w, assets/img/estetica-financeiro.jpg 1600w" sizes="(max-width: 639px) 100vw, 1200px" alt="Controle financeiro da estética: faturamento do mês, recebido, a receber e ticket médio" style="--ly-pos: 0% 0%" fetchpriority="high" width="1600" height="1444" data-source="client" data-subject="estética, financeiro">
         <div class="ly-float">
-          <div class="ly-float__row"><span class="ly-live">Em uso</span><span>5 perfis de acesso</span></div>
-          <div class="ly-float__title">Rastreio de OS numa empresa de comunicação visual</div>
+          <div class="ly-float__row"><span class="ly-live">Em uso</span><span>todos os dias</span></div>
+          <div class="ly-float__title">Da agenda ao caixa numa estética automotiva</div>
         </div>
       </div>
     </div></div>
+  </section>
+
+  <section class="section g2 ground-inverse" id="estetica" aria-labelledby="estetica-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="section-head">
+          <h2 id="estetica-h">Gestão completa de uma estética automotiva. <span class="muted">Nasceu como agenda e virou o sistema principal da loja.</span></h2>
+        </div>
+        <div class="grid grid--top">
+          <div class="span-6 stack-5">
+            <p class="t-lead">A agenda era caderno e planilha, o dinheiro ficava espalhado e o fechamento do mês era feito na mão. Hoje agenda, clientes, terceirizados, contas e caixa conversam no mesmo sistema.</p>
+            <ul class="rows">
+              <li><span class="rows__name">Recorrência por serviço</span><span class="rows__value">quem chamar de volta</span></li>
+              <li><span class="rows__name">Pagamentos lançados</span><span class="rows__value">caem direto no caixa</span></li>
+              <li><span class="rows__name">Agenda ao vivo em todas as telas</span><span class="rows__value">sem F5</span></li>
+              <li><span class="rows__name">Testes automatizados</span><span class="rows__value">314</span></li>
+              <li><span class="rows__name">Agenda do mês com 10 anos de dados</span><span class="rows__value">90 ms</span></li>
+            </ul>
+            <p><a class="link" href="https://github.com/wender95/agenda-estetica-automotiva">Ler o caso no GitHub</a></p>
+          </div>
+          <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="assets/img/estetica-agenda-semana.jpg" srcset="assets/img/estetica-agenda-semana-800.jpg 800w, assets/img/estetica-agenda-semana.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" alt="A semana na agenda: branco é agendado, azul é concluído e verde é recebido" width="1600" height="844" loading="lazy" data-source="client" data-subject="agenda da estética"></figure>
+        </div>
+      </div>
+      <div class="grid shots">
+        <figure class="shot shot--tall span-4"><img src="assets/img/estetica-clientes-tall-540.jpg" srcset="assets/img/estetica-clientes-tall-540.jpg 540w, assets/img/estetica-clientes-tall.jpg 1080w" sizes="(max-width: 639px) 50vw, 33vw" alt="Clientes com placas, busca por telefone e o filtro de recorrência para chamar de volta" width="1080" height="1350" loading="lazy" data-source="client" data-subject="clientes e recorrência"></figure>
+        <figure class="shot shot--tall span-4"><img src="assets/img/estetica-servico-400.jpg" srcset="assets/img/estetica-servico-400.jpg 400w, assets/img/estetica-servico.jpg 552w" sizes="(max-width: 639px) 50vw, 33vw" alt="Serviço aberto: itens da tabela de preços, terceirizado, forma de pagamento e cliente" width="552" height="1283" loading="lazy" data-source="client" data-subject="serviço aberto"></figure>
+        <figure class="shot shot--tall span-4 desk-only"><img src="assets/img/estetica-caixa.jpg" srcset="assets/img/estetica-caixa-800.jpg 800w, assets/img/estetica-caixa.jpg 1600w" sizes="(max-width: 639px) 400px, 33vw" alt="Caixa: serviços recebidos, contas pagas e lançamentos avulsos num extrato só" width="1600" height="1444" loading="lazy" data-source="client" data-subject="caixa"></figure>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="processo" style="--hm: 2" aria-labelledby="processo-h">
@@ -199,40 +228,13 @@
             </ul>
             <p><a class="link" href="https://github.com/wender95/rastros">Ler o caso no GitHub</a></p>
           </div>
-          <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="assets/img/rastros-agenda.jpg" srcset="assets/img/rastros-agenda-800.jpg 800w, assets/img/rastros-agenda.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" alt="Agenda dos adesivadores no RastrOS: o mês inteiro numa página, cinco espaços de trabalho por dia" width="1600" height="1000" loading="lazy" data-source="client" data-subject="RastrOS, agenda"></figure>
+          <figure class="shot shot--wide span-6 start-7"><img src="assets/img/rastros-agenda.jpg" srcset="assets/img/rastros-agenda-800.jpg 800w, assets/img/rastros-agenda.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" alt="Agenda dos adesivadores no RastrOS: o mês inteiro numa página, cinco espaços de trabalho por dia" width="1600" height="1000" loading="lazy" data-source="client" data-subject="RastrOS, agenda"></figure>
         </div>
       </div>
       <div class="grid shots">
         <figure class="shot shot--tall span-4 desk-only"><img src="assets/img/rastros-produtividade.jpg" srcset="assets/img/rastros-produtividade-800.jpg 800w, assets/img/rastros-produtividade.jpg 1600w" sizes="(max-width: 639px) 400px, 33vw" alt="Produtividade por setor e por pessoa, com tempo em fila e tempo de execução" width="1600" height="1778" loading="lazy" data-source="client" data-subject="RastrOS, produtividade"></figure>
         <figure class="shot shot--tall span-4"><img src="assets/img/rastros-minha-agenda-celular-400.jpg" srcset="assets/img/rastros-minha-agenda-celular-400.jpg 400w, assets/img/rastros-minha-agenda-celular.jpg 780w" sizes="(max-width: 639px) 50vw, 33vw" alt="Minha agenda no celular: o instalador inicia, pausa e conclui cada carro" width="780" height="1688" loading="lazy" data-source="client" data-subject="RastrOS, celular do instalador"></figure>
         <figure class="shot shot--tall span-4"><img src="assets/img/rastros-movimentar-celular-400.jpg" srcset="assets/img/rastros-movimentar-celular-400.jpg 400w, assets/img/rastros-movimentar-celular.jpg 780w" sizes="(max-width: 639px) 50vw, 33vw" alt="Tela do operador no celular, com os botões receber, devolver e despachar" width="780" height="1688" loading="lazy" data-source="client" data-subject="RastrOS, tela do operador"></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section g2 ground-inverse" id="estetica" aria-labelledby="estetica-h">
-    <div class="wrap">
-      <div class="group">
-        <div class="section-head">
-          <h2 id="estetica-h">Agenda e financeiro para estética automotiva. <span class="muted">Pronta para virar mensalidade.</span></h2>
-        </div>
-        <div class="grid grid--top">
-          <div class="span-6 stack-5">
-            <p class="t-lead">A agenda era caderno e planilha, e o fechamento do mês era feito na mão.</p>
-            <ul class="rows">
-              <li><span class="rows__name">Caixa sem digitar duas vezes</span><span class="rows__value">agenda, contas e avulsos</span></li>
-              <li><span class="rows__name">Testes automatizados</span><span class="rows__value">314</span></li>
-              <li><span class="rows__name">Agenda do mês com 10 anos de dados</span><span class="rows__value">90 ms</span></li>
-            </ul>
-            <p><a class="link" href="https://github.com/wender95/agenda-estetica-automotiva">Ler o caso no GitHub</a></p>
-          </div>
-          <figure class="shot shot--wide span-6 start-7"><img src="assets/img/estetica-agenda-semana.jpg" srcset="assets/img/estetica-agenda-semana-800.jpg 800w, assets/img/estetica-agenda-semana.jpg 1600w" sizes="(max-width: 1023px) 100vw, 50vw" alt="A semana na agenda: branco é agendado, azul é concluído e verde é recebido" width="1600" height="844" loading="lazy" data-source="client" data-subject="agenda da estética"></figure>
-        </div>
-      </div>
-      <div class="grid shots">
-        <figure class="shot shot--tall span-4"><img src="assets/img/estetica-servico-400.jpg" srcset="assets/img/estetica-servico-400.jpg 400w, assets/img/estetica-servico.jpg 552w" sizes="(max-width: 639px) 50vw, 33vw" alt="Serviço aberto: itens da tabela de preços, terceirizado, forma de pagamento e cliente" width="552" height="1283" loading="lazy" data-source="client" data-subject="serviço aberto"></figure>
-        <figure class="shot shot--tall span-4 desk-only"><img src="assets/img/estetica-financeiro.jpg" srcset="assets/img/estetica-financeiro-800.jpg 800w, assets/img/estetica-financeiro.jpg 1600w" sizes="(max-width: 639px) 400px, 33vw" alt="Controle financeiro do mês, com recebido, a receber e ticket médio" width="1600" height="1444" loading="lazy" data-source="client" data-subject="financeiro"></figure>
-        <figure class="shot shot--tall span-4"><img src="assets/img/estetica-caixa.jpg" srcset="assets/img/estetica-caixa-800.jpg 800w, assets/img/estetica-caixa.jpg 1600w" sizes="(max-width: 639px) 400px, 33vw" alt="Caixa: serviços recebidos, contas pagas e lançamentos avulsos num extrato só" width="1600" height="1444" loading="lazy" data-source="client" data-subject="caixa"></figure>
       </div>
     </div>
   </section>
@@ -293,7 +295,7 @@
           <a class="nav__logo" href="#top">Wender de Oliveira</a>
           <p class="footer__lede">Implantação de sistemas e levantamento de requisitos, Curitiba.</p>
         </div>
-        <div class="span-2 footer__col"><h3>Projetos</h3><ul><li><a href="#rastros">RastrOS</a></li><li><a href="#estetica">Estética</a></li><li><a href="#pedidos">Pedidos</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Projetos</h3><ul><li><a href="#estetica">Estética</a></li><li><a href="#rastros">RastrOS</a></li><li><a href="#pedidos">Pedidos</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Página</h3><ul><li><a href="#processo">Processo</a></li><li><a href="#ferramentas">Ferramentas</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Perfis</h3><ul><li><a href="https://www.linkedin.com/in/wenderoliveira">LinkedIn</a></li><li><a href="https://github.com/wender95">GitHub</a></li></ul></div>
       </div>
